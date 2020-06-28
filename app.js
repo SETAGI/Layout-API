@@ -47,15 +47,19 @@ const showPicture = async (image, index) => {
 const showName = async (userName, index) => {
 	let figCap = document.createElement('figcaption');
 	figCap.className = 'picture__caption';
-	figCap.innerText = userName;
+	figCap.innerText = await userName;
 	images[index].appendChild(figCap);
 };
 
 const render = async (usersInfo) => {
-	usersInfo.forEach(async (user, index) => {
-		await showPicture(user.avatar_url, index);
-		await showName(user.login, index);
-	});
+	try {
+		usersInfo.forEach(async (user, index) => {
+			await showPicture(user.avatar_url, index);
+			await showName(user.login, index);
+		});
+	} catch (error) {
+		console.error('Something is wrong', error);
+	}
 };
 
 const getInfoUsers = async () => {
@@ -70,6 +74,10 @@ const getInfoUsers = async () => {
 	}
 };
 
-getInfoUsers().then((response) => {
-	render(response);
-});
+getInfoUsers()
+	.then((response) => {
+		render(response);
+	})
+	.catch((error) => {
+		console.error('Something is wrong', error);
+	});
