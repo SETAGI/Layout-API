@@ -35,31 +35,41 @@ const URL = 'https://api.github.com/users',
 
 let picturesArray = [],
 	namesArray = [],
-	userSelected = [];
+	usersSelected = [];
+
+const showPicture = async (image, index) => {
+	let img = document.createElement('img');
+	img.src = await image;
+	img.className = 'picture__image';
+	images[index].appendChild(img);
+};
+
+const showName = async (userName, index) => {
+	let figCap = document.createElement('figcaption');
+	figCap.className = 'picture__caption';
+	figCap.innerText = userName;
+	images[index].appendChild(figCap);
+};
+
+const render = async (usersInfo) => {
+	usersInfo.forEach(async (user, index) => {
+		await showPicture(user.avatar_url, index);
+		await showName(user.login, index);
+	});
+};
 
 const getInfoUsers = async () => {
 	try {
-		let response = await fetch(URL);
+		const response = await fetch(URL);
 		let data = await response.json();
-		userSelected = await data.slice(0, 2);
-		return userSelected;
+		usersSelected = await data.slice(0, 2);
+
+		return usersSelected;
 	} catch (error) {
 		console.error('Something is wrong', error);
 	}
 };
 
-let users = getInfoUsers();
-
-users.then((response) => {
-	response.forEach((user, index) => {
-		let img = document.createElement('img');
-		img.src = user.avatar_url;
-		img.className = 'picture__image';
-		images[index].appendChild(img);
-
-		let figCap = document.createElement('figcaption');
-		figCap.className = 'picture__caption';
-		figCap.innerText = user.login;
-		images[index].appendChild(figCap);
-	});
+getInfoUsers().then((response) => {
+	render(response);
 });
