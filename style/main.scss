@@ -1,0 +1,114 @@
+@import './reset';
+
+body {
+	padding: 2rem;
+	border: 2px solid #000;
+	font-size: 1.6rem;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem;
+	border: 2px solid #000;
+
+	&__logo {
+		width: 20rem;
+		height: 5rem;
+		border: 2px solid #000;
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+		a {
+			color: #000;
+			text-decoration: none;
+			padding-right: 0.5rem;
+			&:not(:last-child) {
+				border-right: 1px solid #000;
+				margin-right: 0.5rem;
+			}
+		}
+	}
+}
+
+.presentation {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 2rem 0;
+	padding: 3rem;
+	border: 2px solid #000;
+
+	&__textHeading {
+		width: 40%;
+		h1 {
+			font-size: 4rem;
+			font-weight: bold;
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__image {
+		width: 40%;
+
+		width: 40rem;
+		height: 20rem;
+		img {
+			width: 100%;
+			height: 100%;
+			border: 2px solid #000;
+			border-radius: 2rem;
+		}
+	}
+}
+
+.showUsers {
+	padding: 4rem;
+	border: 2px solid #000;
+
+	&__containerPictures {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.picture {
+	width: 45rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&:not(:last-child) {
+		margin-right: 4rem;
+	}
+
+	&__image {
+		width: 70%;
+		border-radius: 100%;
+		margin-bottom: 2rem;
+		border: 2px solid #000;
+	}
+	&__caption {
+		font-size: 4rem;
+	}
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	margin-top: 3rem;
+	font-size: 3rem;
+	color: #000;
+	width: 60rem;
+	height: 6rem;
+	text-align: center;
+	border: 2px solid #000;
+	text-decoration: none;
+}
