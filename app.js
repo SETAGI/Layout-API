@@ -3,7 +3,7 @@
 let title = document.querySelector('.presentation__textHeading h1');
 title.innerHTML = 'Hi Everyone';
 /* Other way */
-// title.innerText = 'Hi My dear firend';
+title.innerText = 'Hi Everyone';
 
 // /* ------------------------------ Exercise 2 ------------------------------- */
 let a = document.createElement('a');
